@@ -4,7 +4,7 @@ Feature: verify user's authentication
     Given user enters email "<email>" and password "<password>" in request body
     And cURL
     And user gets response body
-    When user hits POST "/signup"
+    When user hits "POST" "/auth/v1/signup"
     Then verify status code is 200
     Examples:
       | email               | password       | #
@@ -16,7 +16,7 @@ Feature: verify user's authentication
     Given user enters email "<email>" and password "<password>" in request body
     And cURL
     And user gets response body
-    When user hits POST "/signup"
+    When user hits "POST" "/auth/v1/signup"
     Then verify status code is not 200
     Examples:
       | email         | password       |
@@ -31,7 +31,7 @@ Feature: verify user's authentication
     And cURL
     And user gets response body
     And query param key is "grant_type" and value is "password"
-    When user hits POST "/token"
+    When user hits "POST" "/auth/v1/token"
     Then verify status code is 200
     Examples:
       | email                    | password   |
@@ -40,19 +40,19 @@ Feature: verify user's authentication
 
   Scenario: Get current user
     Given user has an access token
-    When user hits "GET" "/user"
+    When user hits "GET" "/auth/v1/user"
     Then verify status code is 200
 
 
   Scenario: Sign out
     Given user has an access token
-    When user hits "POST" "/logout"
+    When user hits "POST" "/auth/v1/logout"
     Then verify status code is 204
 
   Scenario: Refresh access token
     Given user has an access token
     And request body "refresh_token"
-    When user hits "POST" "/token?grant_type=refresh_token"
+    When user hits "POST" "/auth/v1/token?grant_type=refresh_token"
     Then verify status code is 200
 
 

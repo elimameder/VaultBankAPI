@@ -9,8 +9,8 @@ import pojo.AuthenticationResponse;
 
 public class APIUtils {
 
-     protected RequestSpecification request;
-     protected Response response;
+     protected static RequestSpecification request;
+     protected static Response response;
 
     public String getToken() {
         AuthenticationRequest body = new AuthenticationRequest(
@@ -25,7 +25,7 @@ public class APIUtils {
                 .queryParam("grant_type", "password")
                 .body(body);
 
-        response = request.post("/token");
+        response = request.post("/auth/v1/token");
 
         AuthenticationResponse authResponse = response.as(AuthenticationResponse.class);
 
@@ -43,7 +43,7 @@ public class APIUtils {
                 .queryParam("grant_type", "password")
                 .body(body);
 
-        response = request.post("/token");
+        response = request.post("/auth/v1/token");
         AuthenticationResponse authresponse = response.as(AuthenticationResponse.class);
 
         return authresponse.getRefresh_token();

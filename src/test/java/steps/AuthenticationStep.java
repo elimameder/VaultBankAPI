@@ -29,14 +29,11 @@ public class AuthenticationStep extends APIUtils {
     public void user_gets_response_body() {
         request.body(body);
     }
-    @When("user hits POST {string}")
-    public void user_hits_post(String endpoint) {
-        response = request.post(endpoint);
-    }
+
     @Then("verify status code is {int}")
     public void verify_status_code_is(Integer statusCode) {
         System.out.println("Status code is " + response.statusCode());
-        System.out.println("Response body is " + response.asPrettyString());
+//        System.out.println("Response body is " + response.asPrettyString());
         Assertions.assertEquals(statusCode,response.statusCode());
     }
 
