@@ -18,6 +18,7 @@ public class AuthenticationStep extends APIUtils {
     public void user_enters_email_and_password_in_request_body(String email, String password) {
         body = new AuthenticationRequest(email, password);
     }
+
     @Given("cURL")
     public void c_url() {
         request = RestAssured.given()
@@ -25,6 +26,7 @@ public class AuthenticationStep extends APIUtils {
                 .contentType(ContentType.JSON)
                 .header("apikey", ConfigurationReader.getProperty("apikey"));
     }
+
     @Given("user gets response body")
     public void user_gets_response_body() {
         request.body(body);
@@ -41,7 +43,6 @@ public class AuthenticationStep extends APIUtils {
     public void verify_with_invalid_credentials(Integer statusCode) {
         Assertions.assertNotEquals(statusCode,response.statusCode());
     }
-
 
     //sign in
 

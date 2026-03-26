@@ -32,6 +32,12 @@ public class APIUtils {
         return authResponse.getAccess_token();
     }
 
+    public String invalidToken(){
+        String invalidToken;
+        invalidToken = "invalid" + getToken();
+        return invalidToken;
+    }
+
 
     public String getRefreshToken() {
         AuthenticationRequest body = new AuthenticationRequest("testuser1@vaultbank.test", "Test1Pass!");
