@@ -23,7 +23,7 @@ Feature: transactions requests
     Then verify status code is 401
 
   @NegativeScenario
-  Scenario: verify user can get list of all transactions
+  Scenario: verify user can not get list of all transactions if requested range not satisfiable
     Given user has an access token
     And sets query params:
       | limit  | 5               |
@@ -32,7 +32,7 @@ Feature: transactions requests
       | offset | 999             |
     When user hits "GET" "rest/v1/transactions"
     Then verify status code is 416
-    #failed, bug must be fixed
+    #failed, bug must be fixed. because its returning status code 200
 
 
   @PositiveScenario
@@ -110,5 +110,5 @@ Feature: transactions requests
     And user provides invalid request body
     When user hits "POST" "rest/v1/transactions"
     Then verify status code is 409
-    #failed, bug must be fixed
+    #failed, bug must be fixed. because its returning 400 (as bad request) instead of 409
 
