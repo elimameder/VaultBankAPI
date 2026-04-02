@@ -1,6 +1,7 @@
 @regression
 Feature: verify user's authentication
 
+  @signupWithValidCredentials
   Scenario Outline: sign up with valid credentials
     Given user enters email "<email>" and password "<password>" in request body
     And cURL
@@ -12,7 +13,7 @@ Feature: verify user's authentication
       | newuser11@example.com | SecurePass125! | valid
       | a@example.com         | 123456         | bug -> no min chars for username
 
-
+  @signupWithInvalidCredentials
   Scenario Outline: sign up with invalid credentials
     Given user enters email "<email>" and password "<password>" in request body
     And cURL
@@ -27,6 +28,7 @@ Feature: verify user's authentication
       |               | 123            |
       |               |                |
 
+  @signingWithValidCredentials
   Scenario Outline: sign in with valid credentials
     Given user enters email "<email>" and password "<password>" in request body
     And cURL
@@ -39,17 +41,20 @@ Feature: verify user's authentication
       | testuser1@vaultbank.test | Test1Pass! |
       | testuser2@vaultbank.test | Test2Pass! |
 
+  @getCurrentUser
   Scenario: Get current user
     Given user has an access token
     When user hits "GET" "/auth/v1/user"
     Then verify status code is 200
 
 
+  @signOut
   Scenario: Sign out
     Given user has an access token
     When user hits "POST" "/auth/v1/logout"
     Then verify status code is 204
 
+  @refreshToken
   Scenario: Refresh access token
     Given user has an access token
     And request body "refresh_token"
