@@ -1,6 +1,7 @@
 @regression
 Feature: Create card
 
+  @CreateCard
   Scenario: Create card returns 403
     Given user sets base request with token
     When user hits POST "/bank_cards"
