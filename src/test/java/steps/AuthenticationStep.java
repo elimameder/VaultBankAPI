@@ -35,7 +35,7 @@ public class AuthenticationStep extends APIUtils {
     @Then("verify status code is {int}")
     public void verify_status_code_is(Integer statusCode) {
         System.out.println("Status code is " + response.statusCode());
-//        System.out.println("Response body is " + response.asPrettyString());
+       // System.out.println("Response body is " + response.asPrettyString());
         Assertions.assertEquals(statusCode,response.statusCode());
     }
 
