@@ -64,6 +64,7 @@ public class AuthenticationStep extends APIUtils {
     }
     @When("user hits {string} {string}")
     public void user_hits_method_and_endpoint(String http ,String endpoint) {
+        System.out.println("Request URI: " + request.log().uri());
         response = hitEndpoint(http, endpoint);
     }
 

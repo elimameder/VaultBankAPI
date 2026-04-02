@@ -1,3 +1,4 @@
+@regression
 Feature: user can manipulate profile information
 
   @profileFeatures @successfulProfileFeatures

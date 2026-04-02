@@ -1,3 +1,4 @@
+@regression
 Feature: Create card
 
   Scenario: Create card returns 403

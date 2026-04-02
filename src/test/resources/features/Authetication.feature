@@ -1,3 +1,4 @@
+@regression
 Feature: verify user's authentication
 
   Scenario Outline: sign up with valid credentials
@@ -7,9 +8,9 @@ Feature: verify user's authentication
     When user hits "POST" "/auth/v1/signup"
     Then verify status code is 200
     Examples:
-      | email               | password       | #
+      | email                 | password       | #
       | newuser11@example.com | SecurePass125! | valid
-      | a@example.com       | 123456         | bug -> no min chars for username
+      | a@example.com         | 123456         | bug -> no min chars for username
 
 
   Scenario Outline: sign up with invalid credentials

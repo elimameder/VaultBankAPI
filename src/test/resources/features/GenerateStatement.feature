@@ -1,3 +1,4 @@
+@regression
 Feature: Generating monthly statement
 
   Scenario: user generates monthly statement successfully
